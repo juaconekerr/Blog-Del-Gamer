@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blog Del Gamer - Política</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      padding-top: 64px;
+      background-color: #f3f4f6;
+      color: #111827;
+      margin: 0;
+    }
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 64px;
+      background-color: #fff;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      z-index: 50;
+      transition: top 0.3s ease-in-out;
+    }
+    header.hide {
+      top: -64px;
+    }
+    nav > div.group > div {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: white;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      border-radius: 0.375rem;
+      margin-top: 0;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+      width: 10rem;
+      z-index: 10;
+    }
+    nav > div.group:hover > div {
+      display: block;
+    }
+    #logo-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 64px;
+      width: auto;
+      min-width: 160px;
+      padding-left: 1rem;
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #2563eb;
+      background: white;
+      user-select: none;
+      box-shadow: 1px 0 3px rgba(0,0,0,0.1);
+      z-index: 51;
+    }
+    #header-inner {
+      max-width: 7xl;
+      margin: 0 auto;
+      padding-left: 96px;
+      padding-right: 24px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+    nav {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      gap: 1.5rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #4b5563;
+      user-select: none;
+    }
+    #right-spacer {
+      width: 96px;
+      flex-shrink: 0;
+    }
+    #auth-buttons {
+      margin-left: auto;
+      display: flex;
+      gap: 0.75rem;
+    }
+    .btn-auth {
+      background-color: #2563eb;
+      color: white;
+      padding: 0.375rem 1rem;
+      border-radius: 0.375rem;
+      font-weight: 600;
+      font-size: 0.875rem;
+      cursor: pointer;
+      user-select: none;
+      border: none;
+      transition: background-color 0.2s ease-in-out;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+    }
+    .btn-auth:hover {
+      background-color: #1e40af;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header id="header">
+    <div id="logo-container">
+      Blog Del Gamer
+    </div>
+    <div id="header-inner">
+      <nav>
+        <div class="group relative cursor-pointer">
+          <button class="hover:text-blue-600">Noticias</button>
+          <div>
+            <a href="politica.html" class="block px-4 py-2 hover:bg-gray-100">Política</a>
+            <a href="impuestos.html" class="block px-4 py-2 hover:bg-gray-100">Impuestos</a>
+          </div>
+        </div>
+        <div class="group relative cursor-pointer">
+          <button class="hover:text-blue-600">Gaming</button>
+          <div>
+            <a href="lanzamientos.html" class="block px-4 py-2 hover:bg-gray-100">Lanzamientos</a>
+            <a href="esports.html" class="block px-4 py-2 hover:bg-gray-100">E-Sports</a>
+          </div>
+        </div>
+        <div class="group relative cursor-pointer">
+          <button class="hover:text-blue-600">Opinión</button>
+          <div>
+            <a href="editorial.html" class="block px-4 py-2 hover:bg-gray-100">Editorial</a>
+            <a href="colaboraciones.html" class="block px-4 py-2 hover:bg-gray-100">Colaboraciones</a>
+          </div>
+        </div>
+        <div class="group relative cursor-pointer">
+          <button class="hover:text-blue-600">Más</button>
+          <div>
+            <a href="contacto.html" class="block px-4 py-2 hover:bg-gray-100">Contacto</a>
+            <a href="publicidad.html" class="block px-4 py-2 hover:bg-gray-100">Publicidad</a>
+          </div>
+        </div>
+      </nav>
+
+      <div id="auth-buttons">
+        <button class="btn-auth" type="button" onclick="window.location.href='iniciarsesion.html'">Iniciar Sesión</button>
+        <button class="btn-auth" type="button" onclick="window.location.href='registro.html'">Registrarse</button>
+      </div>
+
+      <div id="right-spacer"></div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="bg-blue-50 py-16">
+    <div class="max-w-3xl mx-auto text-center px-4">
+      <h2 class="text-4xl font-bold text-blue-700 mb-4">Noticias de Política</h2>
+      <p class="text-gray-600 text-lg mb-6">Últimas noticias y análisis político del país.</p>
+    </div>
+  </section>
+
+  <!-- SECCIÓN DE NOTICIAS -->
+  <section class="max-w-6xl mx-auto px-4 py-16">
+    <div id="contenedor-noticias" class="grid md:grid-cols-2 gap-10">
+      <!-- Aquí se cargan las noticias dinámicamente -->
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-gray-900 text-gray-300 py-10 text-center text-sm">
+    © 2025 BlogPro — Hecho con ❤ en Argentina. Todos los derechos reservados.
+  </footer>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+    import {
+      getFirestore,
+      collection,
+      query,
+      orderBy,
+      getDocs,
+      Timestamp
+    } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyB2sj8hEN9RcUSmREvAS-NAZiN8C2rqt4M",
+      authDomain: "blog-del-gamer-3c1e2.firebaseapp.com",
+      projectId: "blog-del-gamer-3c1e2",
+      storageBucket: "blog-del-gamer-3c1e2.appspot.com",
+      messagingSenderId: "574788156311",
+      appId: "1:574788156311:web:22f90825e8cbafd8f622d2",
+      measurementId: "G-W0528FZ9RE"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const contenedorNoticias = document.getElementById("contenedor-noticias");
+
+    function formatearFecha(timestamp) {
+      if (!timestamp) return "";
+      let date = timestamp instanceof Timestamp ? timestamp.toDate() : new Date(timestamp);
+      return date.toLocaleDateString("es-AR", {
+        year: "numeric",
+        month: "long",
+        day: "numeric"
+      });
+    }
+
+    async function cargarNoticiasPolitica() {
+      try {
+        const q = query(collection(db, "Politica"), orderBy("fecha", "desc"));
+        const querySnapshot = await getDocs(q);
+
+        if (querySnapshot.empty) {
+          contenedorNoticias.innerHTML = "<p class='text-center text-gray-500'>No hay noticias para mostrar.</p>";
+          return;
+        }
+
+        contenedorNoticias.innerHTML = "";
+
+        querySnapshot.forEach((doc) => {
+          const data = doc.data();
+
+          const article = document.createElement("article");
+          article.className = "bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden";
+
+          const img = document.createElement("img");
+          img.src = data.imagenUrl || "https://via.placeholder.com/800x400";
+          img.alt = data.titulo || "Noticia";
+          img.className = "w-full h-48 object-cover";
+
+          const contenidoDiv = document.createElement("div");
+          contenidoDiv.className = "p-6";
+
+          const titulo = document.createElement("h3");
+          titulo.className = "text-xl font-semibold mb-2";
+          titulo.textContent = data.titulo || "Sin título";
+
+          const fecha = document.createElement("p");
+          fecha.className = "text-gray-500 text-sm mb-4";
+          fecha.textContent = formatearFecha(data.fecha);
+
+          const contenido = document.createElement("p");
+          contenido.className = "text-gray-600 text-sm mb-4";
+          contenido.textContent = data.contenido || "";
+
+          const leerMas = document.createElement("a");
+          leerMas.href = "#";
+          leerMas.className = "text-blue-600 text-sm hover:underline";
+          leerMas.textContent = "Leer más";
+
+          contenidoDiv.appendChild(titulo);
+          contenidoDiv.appendChild(fecha);
+          contenidoDiv.appendChild(contenido);
+          contenidoDiv.appendChild(leerMas);
+
+          article.appendChild(img);
+          article.appendChild(contenidoDiv);
+
+          contenedorNoticias.appendChild(article);
+        });
+
+      } catch (error) {
+        console.error("Error al cargar noticias de Política:", error);
+        contenedorNoticias.innerHTML = "<p class='text-center text-red-600'>Error al cargar las noticias. Intenta nuevamente más tarde.</p>";
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", cargarNoticiasPolitica);
+  </script>
+  <script type="module" src="/JavaScript/politica.js"></script>
+</body>
+</html>

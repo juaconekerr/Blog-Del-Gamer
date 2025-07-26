@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>El Blog Del Gamer</title>
+  <title>Blog Del Gamer</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -144,47 +144,47 @@ nav > div.group:hover > div {
   <header id="header">
     <!-- Logo fijo a la izquierda ventana -->
     <div id="logo-container">
-      El Blog Del Gamer
+      Blog Del Gamer
     </div>
 
     <!-- Contenedor principal con padding para logo -->
     <div id="header-inner">
       <!-- Menú centrado absolutamente -->
-      <nav>
-        <div class="group relative cursor-pointer">
-          <button class="hover:text-blue-600">Noticias</button>
-          <div>
-            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Nacionales</a>
-            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Internacionales</a>
-          </div>
-        </div>
-        <div class="group relative cursor-pointer">
-          <button class="hover:text-blue-600">Gaming</button>
-          <div>
-            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Lanzamientos</a>
-            <a href="#" class="block px-4 py-2 hover:bg-gray-100">E-Sports</a>
-          </div>
-        </div>
-        <div class="group relative cursor-pointer">
-          <button class="hover:text-blue-600">Opinión</button>
-          <div>
-            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Editorial</a>
-            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Colaboradores</a>
-          </div>
-        </div>
-        <div class="group relative cursor-pointer">
-          <button class="hover:text-blue-600">Más</button>
-          <div>
-            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Contacto</a>
-            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Publicidad</a>
-          </div>
-        </div>
-      </nav>
-
+      <!-- Reemplaza esta sección del menú <nav> con lo siguiente -->
+<nav>
+  <div class="group relative cursor-pointer">
+    <button class="hover:text-blue-600">Noticias</button>
+    <div>
+      <a href="politica.html" class="block px-4 py-2 hover:bg-gray-100">Política</a>
+      <a href="impuestos.html" class="block px-4 py-2 hover:bg-gray-100">Impuestos</a>
+    </div>
+  </div>
+  <div class="group relative cursor-pointer">
+    <button class="hover:text-blue-600">Gaming</button>
+    <div>
+      <a href="lanzamientos.html" class="block px-4 py-2 hover:bg-gray-100">Lanzamientos</a>
+      <a href="e-sports.html" class="block px-4 py-2 hover:bg-gray-100">E-Sports</a>
+    </div>
+  </div>
+  <div class="group relative cursor-pointer">
+    <button class="hover:text-blue-600">Opinión</button>
+    <div>
+      <a href="editorial.html" class="block px-4 py-2 hover:bg-gray-100">Editorial</a>
+      <a href="colaboraciones.html" class="block px-4 py-2 hover:bg-gray-100">Colaboradores</a>
+    </div>
+  </div>
+  <div class="group relative cursor-pointer">
+    <button class="hover:text-blue-600">Más</button>
+    <div>
+      <a href="contacto.html" class="block px-4 py-2 hover:bg-gray-100">Contacto</a>
+      <a href="publicidad.html" class="block px-4 py-2 hover:bg-gray-100">Publicidad</a>
+    </div>
+  </div>
+</nav>
       <!-- Botones iniciar sesión y registrarse -->
       <div id="auth-buttons">
-        <button class="btn-auth" type="button">Iniciar Sesión</button>
-        <button class="btn-auth" type="button">Registrarse</button>
+        <button class="btn-auth" type="button" onclick="window.location.href='iniciarsesion.html'">Iniciar Sesión</button>
+        <button class="btn-auth" type="button" onclick="window.location.href='registro.html'">Registrarse</button>
       </div>
 
       <!-- Div vacío para balancear a la derecha -->

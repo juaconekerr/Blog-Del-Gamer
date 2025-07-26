@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Iniciar sesión - Blog</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-900 font-sans">
+
+  <!-- Header -->
+  <header class="bg-white shadow sticky top-0 z-50">
+    <div class="container mx-auto flex justify-between items-center px-4 py-3">
+      <a href="index.html" class="text-xl font-bold text-blue-600">Blog</a>
+      <nav class="space-x-6 hidden md:flex">
+        <div class="group relative">
+          <button class="font-medium hover:text-blue-600">Noticias</button>
+        </div>
+        <div class="group relative">
+          <button class="font-medium hover:text-blue-600">Gaming</button>
+        </div>
+        <div class="group relative">
+          <button class="font-medium hover:text-blue-600">Opinión</button>
+        </div>
+        <div class="group relative">
+          <button class="font-medium hover:text-blue-600">Más</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Login -->
+  <main class="flex items-center justify-center min-h-screen px-4">
+    <div
+      class="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md"
+      role="main"
+      aria-labelledby="loginTitle"
+    >
+      <h1
+        id="loginTitle"
+        class="text-2xl font-bold mb-6 text-center text-gray-800"
+      >
+        Iniciar sesión
+      </h1>
+
+      <form id="login-form" class="space-y-6" novalidate autocomplete="off" aria-describedby="loginDesc">
+        <p id="loginDesc" class="sr-only">
+          Formulario para iniciar sesión con correo y contraseña.
+        </p>
+
+        <div>
+          <label for="email" class="block text-sm font-medium mb-1"
+            >Correo electrónico</label
+          >
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            autocomplete="email"
+            aria-describedby="email-error"
+            placeholder="tucorreo@ejemplo.com"
+            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+          />
+          <p
+            id="email-error"
+            class="text-red-600 text-xs mt-1 hidden"
+            role="alert"
+          >
+            Por favor ingresa un correo válido.
+          </p>
+        </div>
+
+        <div>
+          <label for="password" class="block text-sm font-medium mb-1"
+            >Contraseña</label
+          >
+          <input
+            type="password"
+            id="password"
+            name="password"
+            required
+            autocomplete="current-password"
+            aria-describedby="password-error"
+            placeholder="Tu contraseña"
+            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+          />
+          <p
+            id="password-error"
+            class="text-red-600 text-xs mt-1 hidden"
+            role="alert"
+          >
+            Por favor ingresa tu contraseña.
+          </p>
+        </div>
+
+        <button
+          type="submit"
+          class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition font-semibold text-lg"
+          aria-label="Iniciar sesión"
+        >
+          Entrar
+        </button>
+
+        <!-- Texto agregado para ir a registro -->
+        <p class="mt-4 text-center text-gray-700">
+          No tenés cuenta? 
+          <a href="registro.html" class="text-blue-600 hover:underline font-semibold">Registrate</a>
+        </p>
+      </form>
+    </div>
+  </main>
+
+  <script type="module" src="/JavaScript/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Crear Noticia - Blog</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-900 font-sans">
+
+  <!-- Header -->
+  <header class="bg-white shadow sticky top-0 z-50">
+    <div class="container mx-auto flex justify-between items-center px-4 py-3">
+      <a href="index.html" class="text-xl font-bold text-blue-600">Blog</a>
+      <nav class="space-x-6 hidden md:flex">
+        <div class="group relative">
+          <button class="font-medium hover:text-blue-600">Noticias</button>
+        </div>
+        <div class="group relative">
+          <button class="font-medium hover:text-blue-600">Gaming</button>
+        </div>
+        <div class="group relative">
+          <button class="font-medium hover:text-blue-600">Opinión</button>
+        </div>
+        <div class="group relative">
+          <button class="font-medium hover:text-blue-600">Más</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Crear Noticia Form -->
+  <main class="flex items-center justify-center min-h-screen px-4">
+    <div
+      class="bg-white p-8 rounded-2xl shadow-xl w-full max-w-lg"
+      role="main"
+      aria-labelledby="formTitle"
+    >
+      <h1
+        id="formTitle"
+        class="text-2xl font-bold mb-6 text-center text-gray-800"
+      >
+        Publicar Noticia
+      </h1>
+
+      <!-- Mensaje de éxito / error -->
+      <div id="estado-mensaje" class="text-center text-sm font-medium mb-4 hidden"></div>
+
+      <form id="noticia-form" class="space-y-6" novalidate autocomplete="off" aria-describedby="formDescription">
+        <p id="formDescription" class="sr-only">
+          Formulario para publicar una noticia. Los campos con asterisco son obligatorios.
+        </p>
+
+        <div>
+          <label for="titulo" class="block text-sm font-medium mb-1"
+            >Título <span aria-hidden="true" class="text-red-600">*</span></label
+          >
+          <input
+            type="text"
+            id="titulo"
+            name="titulo"
+            required
+            aria-required="true"
+            aria-describedby="error-titulo"
+            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+            placeholder="Título de la noticia"
+            maxlength="100"
+          />
+          <p
+            id="error-titulo"
+            class="text-red-600 text-xs mt-1 hidden"
+            role="alert"
+          >
+            Por favor ingresa un título.
+          </p>
+        </div>
+
+        <fieldset class="mb-4">
+          <legend class="block text-sm font-medium mb-2">Categorías <span aria-hidden="true" class="text-red-600">*</span></legend>
+
+          <!-- Contenedor de checkboxes -->
+          <div id="categoria-container" class="grid grid-cols-2 gap-2 max-h-48 overflow-y-auto border border-gray-300 rounded-lg p-3">
+            <!-- Noticias -->
+            <div>
+              <p class="font-semibold mb-1">Noticias</p>
+              <label class="inline-flex items-center">
+                <input type="checkbox" name="categoria" value="Politica" class="form-checkbox text-blue-600" />
+                <span class="ml-2">Política</span>
+              </label><br />
+              <label class="inline-flex items-center">
+                <input type="checkbox" name="categoria" value="Impuestos" class="form-checkbox text-blue-600" />
+                <span class="ml-2">Impuestos</span>
+              </label>
+            </div>
+
+            <!-- Gaming -->
+            <div>
+              <p class="font-semibold mb-1">Gaming</p>
+              <label class="inline-flex items-center">
+                <input type="checkbox" name="categoria" value="Lanzamientos" class="form-checkbox text-blue-600" />
+                <span class="ml-2">Lanzamientos</span>
+              </label><br />
+              <label class="inline-flex items-center">
+                <input type="checkbox" name="categoria" value="E-Sports" class="form-checkbox text-blue-600" />
+                <span class="ml-2">E-Sports</span>
+              </label>
+            </div>
+
+            <!-- Opinión -->
+            <div>
+              <p class="font-semibold mb-1">Opinión</p>
+              <label class="inline-flex items-center">
+                <input type="checkbox" name="categoria" value="Editorial" class="form-checkbox text-blue-600" />
+                <span class="ml-2">Editorial</span>
+              </label><br />
+              <label class="inline-flex items-center">
+                <input type="checkbox" name="categoria" value="Colaboraciones" class="form-checkbox text-blue-600" />
+                <span class="ml-2">Colaboraciones</span>
+              </label>
+            </div>
+          </div>
+
+          <p
+            id="error-categoria"
+            class="text-red-600 text-xs mt-1 hidden"
+            role="alert"
+          >
+            Por favor selecciona al menos una categoría.
+          </p>
+        </fieldset>
+
+        <div>
+          <label for="contenido" class="block text-sm font-medium mb-1"
+            >Contenido <span aria-hidden="true" class="text-red-600">*</span></label
+          >
+          <textarea
+            id="contenido"
+            name="contenido"
+            rows="8"
+            required
+            aria-required="true"
+            aria-describedby="error-contenido"
+            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+            placeholder="Escribí la noticia aquí..."
+            maxlength="2000"
+          ></textarea>
+          <p
+            id="error-contenido"
+            class="text-red-600 text-xs mt-1 hidden"
+            role="alert"
+          >
+            Por favor ingresa el contenido de la noticia.
+          </p>
+        </div>
+
+        <button
+          id="submit-btn"
+          type="submit"
+          class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition font-semibold text-lg"
+          aria-label="Publicar noticia"
+        >
+          Publicar noticia
+        </button>
+      </form>
+    </div>
+  </main>
+
+  <script type="module" src="/JavaScript/panel_noticias.js"></script>
+</body>
+</html>

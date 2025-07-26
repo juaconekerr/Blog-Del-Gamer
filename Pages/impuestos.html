@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Impuestos - Blog</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-900 font-sans">
+
+  <!-- Header -->
+  <header class="bg-white shadow sticky top-0 z-50">
+    <div class="container mx-auto flex justify-between items-center px-4 py-3">
+      <a href="index.html" class="text-xl font-bold text-blue-600">Blog</a>
+      <nav class="space-x-6 hidden md:flex">
+        <div class="group relative">
+          <button class="font-medium hover:text-blue-600">Noticias</button>
+        </div>
+        <div class="group relative">
+          <button class="font-medium hover:text-blue-600">Gaming</button>
+        </div>
+        <div class="group relative">
+          <button class="font-medium hover:text-blue-600">Opinión</button>
+        </div>
+        <div class="group relative">
+          <button class="font-medium hover:text-blue-600">Más</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Título -->
+  <section class="container mx-auto px-4 py-6">
+    <h1 class="text-3xl font-bold text-blue-700">Noticias sobre Impuestos</h1>
+  </section>
+
+  <!-- Contenedor de noticias -->
+  <section id="contenedor-noticias" class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-16">
+    <!-- Noticias se insertan desde JS -->
+  </section>
+
+  <script type="module" src="/JavaScript/impuestos.js"></script>
+</body>
+</html>

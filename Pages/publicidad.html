@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Publicidad - Blog</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .icon-transition {
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-900 font-sans">
+
+  <!-- Header -->
+  <header class="bg-white shadow sticky top-0 z-50">
+    <div class="container mx-auto flex justify-between items-center px-4 py-3">
+      <a href="index.html" class="text-xl font-bold text-blue-600">Blog</a>
+      <nav class="space-x-6 hidden md:flex">
+        <div class="group relative">
+          <button class="font-medium hover:text-blue-600">Noticias</button>
+        </div>
+        <div class="group relative">
+          <button class="font-medium hover:text-blue-600">Gaming</button>
+        </div>
+        <div class="group relative">
+          <button class="font-medium hover:text-blue-600">Opinión</button>
+        </div>
+        <div class="group relative">
+          <button class="font-medium hover:text-blue-600">Más</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Publicidad Form -->
+  <main class="flex items-center justify-center min-h-screen px-4">
+    <div
+      class="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md"
+      role="main"
+      aria-labelledby="formTitle"
+    >
+      <h1
+        id="formTitle"
+        class="text-2xl font-bold mb-6 text-center text-gray-800"
+      >
+        Solicita Publicidad
+      </h1>
+
+      <!-- Mensaje de éxito / error -->
+      <div id="estado-mensaje" class="text-center text-sm font-medium mb-4 hidden"></div>
+
+      <form id="publicidad-form" class="space-y-6" novalidate autocomplete="off" aria-describedby="formDescription">
+        <p id="formDescription" class="sr-only">
+          Formulario para solicitar espacio publicitario. Los campos con asterisco son obligatorios.
+        </p>
+
+        <div class="flex gap-4">
+          <div class="flex-1">
+            <label for="nombre" class="block text-sm font-medium mb-1"
+              >Nombre <span aria-hidden="true" class="text-red-600">*</span></label
+            >
+            <input
+              type="text"
+              id="nombre"
+              name="nombre"
+              required
+              aria-required="true"
+              aria-describedby="error-nombre"
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+              placeholder="Tu nombre"
+              autocomplete="given-name"
+            />
+            <p
+              id="error-nombre"
+              class="text-red-600 text-xs mt-1 hidden"
+              role="alert"
+            >
+              Por favor ingresa tu nombre.
+            </p>
+          </div>
+
+          <div class="flex-1">
+            <label for="apellido" class="block text-sm font-medium mb-1"
+              >Apellido <span aria-hidden="true" class="text-red-600">*</span></label
+            >
+            <input
+              type="text"
+              id="apellido"
+              name="apellido"
+              required
+              aria-required="true"
+              aria-describedby="error-apellido"
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+              placeholder="Tu apellido"
+              autocomplete="family-name"
+            />
+            <p
+              id="error-apellido"
+              class="text-red-600 text-xs mt-1 hidden"
+              role="alert"
+            >
+              Por favor ingresa tu apellido.
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <label for="email" class="block text-sm font-medium mb-1"
+            >Correo electrónico <span aria-hidden="true" class="text-red-600">*</span></label
+          >
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            aria-required="true"
+            aria-describedby="error-email"
+            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+            placeholder="tucorreo@ejemplo.com"
+            autocomplete="email"
+          />
+          <p
+            id="error-email"
+            class="text-red-600 text-xs mt-1 hidden"
+            role="alert"
+          >
+            Por favor ingresa un correo válido.
+          </p>
+        </div>
+
+        <div>
+          <label for="producto" class="block text-sm font-medium mb-1"
+            >Producto o Servicio a Publicitar <span aria-hidden="true" class="text-red-600">*</span></label
+          >
+          <input
+            type="text"
+            id="producto"
+            name="producto"
+            required
+            aria-required="true"
+            aria-describedby="error-producto"
+            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+            placeholder="Nombre o descripción breve"
+          />
+          <p
+            id="error-producto"
+            class="text-red-600 text-xs mt-1 hidden"
+            role="alert"
+          >
+            Por favor ingresa el producto o servicio.
+          </p>
+        </div>
+
+        <div>
+          <label for="mensaje" class="block text-sm font-medium mb-1"
+            >Mensaje adicional (opcional)</label
+          >
+          <textarea
+            id="mensaje"
+            name="mensaje"
+            rows="4"
+            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+            placeholder="Cuéntanos más sobre lo que querés publicitar"
+          ></textarea>
+        </div>
+
+        <!-- Nuevo campo: preferencia de contacto -->
+        <div>
+          <label for="contacto" class="block text-sm font-medium mb-1">¿Cómo preferís que te contactemos?</label>
+          <select
+            id="contacto"
+            name="contacto"
+            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+          >
+            <option value="">Seleccionar una opción</option>
+            <option value="whatsapp">WhatsApp</option>
+            <option value="correo">Correo</option>
+            <option value="instagram">Instagram</option>
+            <option value="telegram">Telegram</option>
+            <option value="otros">Otros</option>
+          </select>
+        </div>
+
+        <div id="campo-contacto" class="mt-2 hidden">
+          <label for="dato-contacto" class="block text-sm font-medium mb-1" id="label-dato-contacto">
+            Ingresá el dato de contacto seleccionado
+          </label>
+
+          <div id="input-whatsapp" class="hidden flex gap-2 items-center">
+            <select
+              id="prefijo-whatsapp"
+              class="w-24 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+              aria-label="Código de país para WhatsApp"
+            >
+              <option value="+54">+54 Argentina</option>
+              <option value="+55">+55 Brasil</option>
+              <option value="+56">+56 Chile</option>
+              <option value="+598">+598 Uruguay</option>
+              <option value="+591">+591 Bolivia</option>
+              <option value="+595">+595 Paraguay</option>
+              <option value="+57">+57 Colombia</option>
+              <option value="+58">+58 Venezuela</option>
+            </select>
+            <input
+              type="tel"
+              id="dato-contacto"
+              name="dato-contacto"
+              class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+              placeholder="Tu número de WhatsApp"
+              aria-describedby="error-dato-contacto"
+            />
+          </div>
+
+          <input
+            type="email"
+            id="dato-contacto-correo"
+            name="dato-contacto-correo"
+            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition hidden"
+            placeholder="Tu correo"
+            aria-describedby="error-dato-contacto"
+          />
+
+          <input
+            type="text"
+            id="dato-contacto-instagram"
+            name="dato-contacto-instagram"
+            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition hidden"
+            placeholder="Tu Instagram"
+            aria-describedby="error-dato-contacto"
+          />
+
+          <input
+            type="text"
+            id="dato-contacto-telegram"
+            name="dato-contacto-telegram"
+            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition hidden"
+            placeholder="Tu Telegram"
+            aria-describedby="error-dato-contacto"
+          />
+
+          <input
+            type="text"
+            id="dato-contacto-otros"
+            name="dato-contacto-otros"
+            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition hidden"
+            placeholder="Especificá tu contacto"
+            aria-describedby="error-dato-contacto"
+          />
+
+          <p
+            id="error-dato-contacto"
+            class="text-red-600 text-xs mt-1 hidden"
+            role="alert"
+          >
+            Por favor ingresa el dato de contacto.
+          </p>
+        </div>
+
+        <button
+          id="submit-btn"
+          type="submit"
+          class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition font-semibold text-lg"
+          aria-label="Enviar solicitud de publicidad"
+        >
+          Enviar solicitud
+        </button>
+      </form>
+    </div>
+  </main>
+
+  <script type="module">
+    // JS para mostrar/ocultar y cambiar inputs de contacto según selección
+    const contactoSelect = document.getElementById("contacto");
+    const campoContacto = document.getElementById("campo-contacto");
+
+    const inputWhatsapp = document.getElementById("input-whatsapp");
+    const inputCorreo = document.getElementById("dato-contacto-correo");
+    const inputInstagram = document.getElementById("dato-contacto-instagram");
+    const inputTelegram = document.getElementById("dato-contacto-telegram");
+    const inputOtros = document.getElementById("dato-contacto-otros");
+
+    contactoSelect.addEventListener("change", () => {
+      const val = contactoSelect.value;
+
+      // Mostrar o esconder el div contenedor
+      if (val === "") {
+        campoContacto.classList.add("hidden");
+      } else {
+        campoContacto.classList.remove("hidden");
+      }
+
+      // Ocultar todos los inputs primero
+      inputWhatsapp.classList.add("hidden");
+      inputCorreo.classList.add("hidden");
+      inputInstagram.classList.add("hidden");
+      inputTelegram.classList.add("hidden");
+      inputOtros.classList.add("hidden");
+
+      // Mostrar solo el correspondiente según opción
+      if (val === "whatsapp") {
+        inputWhatsapp.classList.remove("hidden");
+      } else if (val === "correo") {
+        inputCorreo.classList.remove("hidden");
+        inputCorreo.focus();
+      } else if (val === "instagram") {
+        inputInstagram.classList.remove("hidden");
+        inputInstagram.focus();
+      } else if (val === "telegram") {
+        inputTelegram.classList.remove("hidden");
+        inputTelegram.focus();
+      } else if (val === "otros") {
+        inputOtros.classList.remove("hidden");
+        inputOtros.focus();
+      }
+    });
+  </script>
+  <script type="module" src="/JavaScript/publicidad.js"></script>
+</body>
+</html>
