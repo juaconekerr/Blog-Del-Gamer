@@ -1,5 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
-import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+import { getFirestore, doc, getDoc, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyB2sj8hEN9RcUSmREvAS-NAZiN8C2rqt4M",
@@ -12,11 +13,53 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 const db = getFirestore(app);
 
 const form = document.getElementById("noticia-form");
 const submitBtn = document.getElementById("submit-btn");
 const estadoMensaje = document.getElementById("estado-mensaje");
+const panelContent = document.getElementById("panel-content");
+const mensajeAcceso = document.getElementById("mensaje-acceso");
+
+function mostrarMensajeAcceso(mensaje) {
+  panelContent.style.display = "none";
+  mensajeAcceso.textContent = mensaje;
+  mensajeAcceso.classList.remove("hidden");
+}
+
+onAuthStateChanged(auth, async (user) => {
+  if (!user) {
+    mostrarMensajeAcceso("No iniciaste sesión. Serás redirigido a la página de inicio de sesión en 5 segundos.");
+    setTimeout(() => {
+      window.location.href = "iniciarsesion.html"; // Cambiá este nombre si tu página de login tiene otro nombre
+    }, 5000);
+    return;
+  }
+  try {
+    const userDoc = await getDoc(doc(db, "usuarios", user.uid));
+    if (!userDoc.exists()) {
+      mostrarMensajeAcceso("No tenés permisos para entrar a esta página.");
+      setTimeout(() => {
+        window.location.href = "index.html";
+      }, 5000);
+      return;
+    }
+    const userData = userDoc.data();
+    if (userData.rol !== "Administrador") {
+      mostrarMensajeAcceso("No tenés permisos para entrar a esta página.");
+      setTimeout(() => {
+        window.location.href = "index.html";
+      }, 5000);
+      return;
+    }
+    // Usuario autorizado
+    panelContent.style.display = "block";
+  } catch (error) {
+    console.error("Error al verificar permisos:", error);
+    mostrarMensajeAcceso("Error de acceso. Intenta nuevamente.");
+  }
+});
 
 function validarCampo(idInput, idError) {
   const input = document.getElementById(idInput);
@@ -66,16 +109,14 @@ form.addEventListener("submit", async (e) => {
   submitBtn.textContent = "Publicando...";
 
   try {
-    // Publicar en todas las colecciones de categorías seleccionadas
-    const promises = categorias.map(cat => {
-      return addDoc(collection(db, cat), {
+    const promesas = categorias.map(cat =>
+      addDoc(collection(db, cat), {
         titulo,
         contenido,
         fecha: serverTimestamp(),
-      });
-    });
-
-    await Promise.all(promises);
+      })
+    );
+    await Promise.all(promesas);
 
     estadoMensaje.textContent = "Noticia publicada correctamente en todas las categorías seleccionadas.";
     estadoMensaje.classList.remove("hidden", "text-red-600");

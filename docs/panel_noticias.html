@@ -31,17 +31,8 @@
 
   <!-- Crear Noticia Form -->
   <main class="flex items-center justify-center min-h-screen px-4">
-    <div
-      class="bg-white p-8 rounded-2xl shadow-xl w-full max-w-lg"
-      role="main"
-      aria-labelledby="formTitle"
-    >
-      <h1
-        id="formTitle"
-        class="text-2xl font-bold mb-6 text-center text-gray-800"
-      >
-        Publicar Noticia
-      </h1>
+    <div class="bg-white p-8 rounded-2xl shadow-xl w-full max-w-lg" role="main" aria-labelledby="formTitle" id="panel-content" style="display:none;">
+      <h1 id="formTitle" class="text-2xl font-bold mb-6 text-center text-gray-800">Publicar Noticia</h1>
 
       <!-- Mensaje de éxito / error -->
       <div id="estado-mensaje" class="text-center text-sm font-medium mb-4 hidden"></div>
@@ -51,10 +42,11 @@
           Formulario para publicar una noticia. Los campos con asterisco son obligatorios.
         </p>
 
+        <!-- Título -->
         <div>
-          <label for="titulo" class="block text-sm font-medium mb-1"
-            >Título <span aria-hidden="true" class="text-red-600">*</span></label
-          >
+          <label for="titulo" class="block text-sm font-medium mb-1">
+            Título <span aria-hidden="true" class="text-red-600">*</span>
+          </label>
           <input
             type="text"
             id="titulo"
@@ -66,73 +58,86 @@
             placeholder="Título de la noticia"
             maxlength="100"
           />
-          <p
-            id="error-titulo"
-            class="text-red-600 text-xs mt-1 hidden"
-            role="alert"
-          >
+          <p id="error-titulo" class="text-red-600 text-xs mt-1 hidden" role="alert">
             Por favor ingresa un título.
           </p>
         </div>
 
-        <fieldset class="mb-4">
-          <legend class="block text-sm font-medium mb-2">Categorías <span aria-hidden="true" class="text-red-600">*</span></legend>
+        <!-- Categorías -->
+        <fieldset>
+          <legend class="block text-sm font-medium mb-2">
+            Categorías <span aria-hidden="true" class="text-red-600">*</span>
+          </legend>
 
-          <!-- Contenedor de checkboxes -->
-          <div id="categoria-container" class="grid grid-cols-2 gap-2 max-h-48 overflow-y-auto border border-gray-300 rounded-lg p-3">
+          <div id="categoria-container" class="space-y-4">
             <!-- Noticias -->
             <div>
-              <p class="font-semibold mb-1">Noticias</p>
-              <label class="inline-flex items-center">
-                <input type="checkbox" name="categoria" value="Politica" class="form-checkbox text-blue-600" />
-                <span class="ml-2">Política</span>
-              </label><br />
-              <label class="inline-flex items-center">
-                <input type="checkbox" name="categoria" value="Impuestos" class="form-checkbox text-blue-600" />
-                <span class="ml-2">Impuestos</span>
-              </label>
+              <p class="font-semibold mb-2 text-gray-700">Noticias</p>
+              <div class="flex flex-wrap gap-2">
+                <label class="cursor-pointer">
+                  <input type="checkbox" name="categoria" value="Politica" class="peer hidden" />
+                  <div class="px-4 py-2 border border-gray-300 rounded-full peer-checked:bg-blue-600 peer-checked:text-white transition">
+                    Política
+                  </div>
+                </label>
+                <label class="cursor-pointer">
+                  <input type="checkbox" name="categoria" value="Impuestos" class="peer hidden" />
+                  <div class="px-4 py-2 border border-gray-300 rounded-full peer-checked:bg-blue-600 peer-checked:text-white transition">
+                    Impuestos
+                  </div>
+                </label>
+              </div>
             </div>
 
             <!-- Gaming -->
             <div>
-              <p class="font-semibold mb-1">Gaming</p>
-              <label class="inline-flex items-center">
-                <input type="checkbox" name="categoria" value="Lanzamientos" class="form-checkbox text-blue-600" />
-                <span class="ml-2">Lanzamientos</span>
-              </label><br />
-              <label class="inline-flex items-center">
-                <input type="checkbox" name="categoria" value="E-Sports" class="form-checkbox text-blue-600" />
-                <span class="ml-2">E-Sports</span>
-              </label>
+              <p class="font-semibold mb-2 text-gray-700">Gaming</p>
+              <div class="flex flex-wrap gap-2">
+                <label class="cursor-pointer">
+                  <input type="checkbox" name="categoria" value="Lanzamientos" class="peer hidden" />
+                  <div class="px-4 py-2 border border-gray-300 rounded-full peer-checked:bg-blue-600 peer-checked:text-white transition">
+                    Lanzamientos
+                  </div>
+                </label>
+                <label class="cursor-pointer">
+                  <input type="checkbox" name="categoria" value="E-Sports" class="peer hidden" />
+                  <div class="px-4 py-2 border border-gray-300 rounded-full peer-checked:bg-blue-600 peer-checked:text-white transition">
+                    E-Sports
+                  </div>
+                </label>
+              </div>
             </div>
 
             <!-- Opinión -->
             <div>
-              <p class="font-semibold mb-1">Opinión</p>
-              <label class="inline-flex items-center">
-                <input type="checkbox" name="categoria" value="Editorial" class="form-checkbox text-blue-600" />
-                <span class="ml-2">Editorial</span>
-              </label><br />
-              <label class="inline-flex items-center">
-                <input type="checkbox" name="categoria" value="Colaboraciones" class="form-checkbox text-blue-600" />
-                <span class="ml-2">Colaboraciones</span>
-              </label>
+              <p class="font-semibold mb-2 text-gray-700">Opinión</p>
+              <div class="flex flex-wrap gap-2">
+                <label class="cursor-pointer">
+                  <input type="checkbox" name="categoria" value="Editorial" class="peer hidden" />
+                  <div class="px-4 py-2 border border-gray-300 rounded-full peer-checked:bg-blue-600 peer-checked:text-white transition">
+                    Editorial
+                  </div>
+                </label>
+                <label class="cursor-pointer">
+                  <input type="checkbox" name="categoria" value="Colaboraciones" class="peer hidden" />
+                  <div class="px-4 py-2 border border-gray-300 rounded-full peer-checked:bg-blue-600 peer-checked:text-white transition">
+                    Colaboraciones
+                  </div>
+                </label>
+              </div>
             </div>
           </div>
 
-          <p
-            id="error-categoria"
-            class="text-red-600 text-xs mt-1 hidden"
-            role="alert"
-          >
+          <p id="error-categoria" class="text-red-600 text-xs mt-1 hidden" role="alert">
             Por favor selecciona al menos una categoría.
           </p>
         </fieldset>
 
+        <!-- Contenido -->
         <div>
-          <label for="contenido" class="block text-sm font-medium mb-1"
-            >Contenido <span aria-hidden="true" class="text-red-600">*</span></label
-          >
+          <label for="contenido" class="block text-sm font-medium mb-1">
+            Contenido <span aria-hidden="true" class="text-red-600">*</span>
+          </label>
           <textarea
             id="contenido"
             name="contenido"
@@ -144,15 +149,12 @@
             placeholder="Escribí la noticia aquí..."
             maxlength="2000"
           ></textarea>
-          <p
-            id="error-contenido"
-            class="text-red-600 text-xs mt-1 hidden"
-            role="alert"
-          >
+          <p id="error-contenido" class="text-red-600 text-xs mt-1 hidden" role="alert">
             Por favor ingresa el contenido de la noticia.
           </p>
         </div>
 
+        <!-- Botón -->
         <button
           id="submit-btn"
           type="submit"
@@ -163,6 +165,8 @@
         </button>
       </form>
     </div>
+
+    <div id="mensaje-acceso" class="hidden p-6 max-w-md text-center text-red-700 font-semibold"></div>
   </main>
 
   <script type="module" src="/JavaScript/panel_noticias.js"></script>

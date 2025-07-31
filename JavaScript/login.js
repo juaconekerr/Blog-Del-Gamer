@@ -65,13 +65,17 @@ form.addEventListener("submit", async (e) => {
   if (!valid) return;
 
   try {
-    const userCredential = await signInWithEmailAndPassword(auth, emailInput.value.trim(), passwordInput.value);
-    
-    // Obtener datos de Firestore
+    const userCredential = await signInWithEmailAndPassword(
+      auth,
+      emailInput.value.trim(),
+      passwordInput.value
+    );
+
+    // Obtener datos del usuario desde Firestore
     const uid = userCredential.user.uid;
     const userDocRef = doc(db, "usuarios", uid);
     const userDocSnap = await getDoc(userDocRef);
-    
+
     if (userDocSnap.exists()) {
       const userData = userDocSnap.data();
       console.log("Datos del usuario:", userData);
@@ -91,14 +95,29 @@ form.addEventListener("submit", async (e) => {
     console.error("Error al iniciar sesión:", error);
     mensajeErrorGlobal.style.color = "red";
 
-    if (error.code === "auth/user-not-found") {
-      mensajeErrorGlobal.textContent = "Usuario no registrado. Por favor, crea una cuenta.";
-    } else if (error.code === "auth/wrong-password") {
-      mensajeErrorGlobal.textContent = "Contraseña incorrecta. Intenta nuevamente.";
-    } else if (error.code === "auth/invalid-email") {
-      mensajeErrorGlobal.textContent = "Correo electrónico no válido.";
-    } else {
-      mensajeErrorGlobal.textContent = "Error al iniciar sesión: " + error.message;
+    switch (error.code) {
+      case "auth/user-not-found":
+        mensajeErrorGlobal.textContent = "El usuario no está registrado. Por favor, crea una cuenta.";
+        break;
+      case "auth/wrong-password":
+      case "auth/invalid-credential":
+        mensajeErrorGlobal.textContent = "Contraseña incorrecta. Intenta nuevamente.";
+        break;
+      case "auth/invalid-email":
+        mensajeErrorGlobal.textContent = "Correo electrónico no válido.";
+        break;
+      case "auth/too-many-requests":
+        mensajeErrorGlobal.textContent = "Demasiados intentos fallidos. Espera unos minutos e intenta nuevamente.";
+        break;
+      case "auth/network-request-failed":
+        mensajeErrorGlobal.textContent = "Problemas de conexión. Verifica tu red e intenta de nuevo.";
+        break;
+      case "auth/internal-error":
+        mensajeErrorGlobal.textContent = "Error interno. Por favor, intenta nuevamente más tarde.";
+        break;
+      default:
+        mensajeErrorGlobal.textContent = "Error al iniciar sesión. Por favor, verifica tus datos e intenta nuevamente.";
+        break;
     }
   }
 });
