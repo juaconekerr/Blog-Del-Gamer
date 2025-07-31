@@ -36,28 +36,35 @@ function actualizarArticulo(articulo, noticia) {
     articulo.querySelector("p").textContent = "";
     articulo.querySelector("a").removeAttribute("href");
     articulo.querySelector("img").src = "https://via.placeholder.com/800x400?text=Sin+Imagen";
+    articulo.querySelector("img").alt = "Sin imagen";
     return;
   }
 
   articulo.querySelector("h3").textContent = noticia.titulo || "Sin título";
   articulo.querySelector("p").textContent = noticia.contenido ? noticia.contenido.substring(0, 150) + "..." : "Sin resumen disponible.";
-  // Si tenés una URL de imagen en la noticia, la podes usar aquí; si no, dejo un placeholder
   articulo.querySelector("img").src = noticia.imagenURL || "https://via.placeholder.com/800x400";
   articulo.querySelector("img").alt = noticia.titulo || "Imagen noticia";
-  // Asumo que la noticia tiene un campo "url" o similar para el link, sino dejar #
   articulo.querySelector("a").href = noticia.url || "#";
   articulo.querySelector("a").textContent = "Leer más";
 }
 
 // Al cargar la página
 window.addEventListener("DOMContentLoaded", async () => {
-  const articulos = document.querySelectorAll("section:nth-of-type(3) article"); // Los dos destacados están en el 3er section, dos artículos
+  // Los artículos destacados están en el segundo <section> (índice 1) en tu HTML
+  const secciones = document.querySelectorAll("section");
+  if (secciones.length < 2) {
+    console.warn("No se encontraron las secciones esperadas.");
+    return;
+  }
+  const destacadosSection = secciones[1];
+  const articulos = destacadosSection.querySelectorAll("article");
 
   if (articulos.length < 2) {
     console.warn("No se encontraron los dos artículos destacados para actualizar.");
     return;
   }
 
+  // Carga últimas noticias según tu lógica
   const noticiaImpuestos = await obtenerUltimaNoticia("Impuestos");
   actualizarArticulo(articulos[0], noticiaImpuestos);
 
