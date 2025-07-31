@@ -35,33 +35,31 @@
       box-shadow: 0 1px 3px rgba(0,0,0,0.1);
       z-index: 50;
       transition: top 0.3s ease-in-out;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding-left: 160px; /* espacio para logo fijo */
-      padding-right: 24px;
     }
     header.hide {
       top: -64px;
     }
     /* Menú desplegable */
-    nav > div.group > div {
-      display: none;
-      position: absolute;
-      top: 100%; /* justo abajo del botón */
-      left: 0;   /* alineado al borde izquierdo del botón */
-      background-color: white;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      border-radius: 0.375rem; /* rounded-md */
-      margin-top: 0; /* eliminar margen superior */
-      padding-top: 0.5rem;
-      padding-bottom: 0.5rem;
-      width: 10rem; /* w-40 */
-      z-index: 10;
-    }
-    nav > div.group:hover > div {
-      display: block;
-    }
+nav > div.group > div {
+  display: none;
+  position: absolute;
+  top: 100%; /* justo abajo del botón */
+  left: 0;   /* alineado al borde izquierdo del botón */
+  background-color: white;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  border-radius: 0.375rem; /* rounded-md */
+  margin-top: 0; /* eliminar margen superior */
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  width: 10rem; /* w-40 */
+  z-index: 10;
+}
+
+
+nav > div.group:hover > div {
+  display: block;
+}
+
     /* Estilos para logo pegado a la izquierda */
     #logo-container {
       position: fixed;
@@ -81,6 +79,18 @@
       user-select: none;
       box-shadow: 1px 0 3px rgba(0,0,0,0.1);
       z-index: 51;
+    }
+
+    /* Ajustamos contenedor principal para dejar espacio al logo fijo */
+    #header-inner {
+      max-width: 7xl;
+      margin: 0 auto;
+      padding-left: 96px; /* espacio para logo fijo */
+      padding-right: 24px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      position: relative;
     }
     /* Navegación centrada */
     nav {
@@ -105,7 +115,6 @@
       margin-left: auto;
       display: flex;
       gap: 0.75rem; /* espacio entre botones */
-      align-items: center;
     }
     /* Estilo botones */
     .btn-auth {
@@ -127,67 +136,6 @@
     .btn-auth:hover {
       background-color: #1e40af; /* azul más oscuro para hover (Tailwind bg-blue-800) */
     }
-
-    /* ----------- MODIFICACIONES PARA RESPONSIVE ----------- */
-
-    /* En móviles hacemos que el header sea flex-wrap y el nav se adapte */
-    @media (max-width: 640px) {
-      header {
-        padding-left: 1rem;
-        padding-right: 1rem;
-        height: auto;
-        flex-wrap: wrap;
-        justify-content: space-between;
-      }
-      #logo-container {
-        position: relative;
-        width: auto;
-        min-width: auto;
-        padding-left: 0;
-        padding-bottom: 0.5rem;
-        box-shadow: none;
-      }
-      nav {
-        position: static;
-        transform: none;
-        width: 100%;
-        justify-content: space-around;
-        margin-bottom: 0.5rem;
-        font-size: 0.875rem;
-      }
-      nav > div.group > div {
-        position: static;
-        box-shadow: none;
-        width: auto;
-        border-radius: 0;
-        padding-top: 0;
-        padding-bottom: 0;
-        display: none;
-        background: transparent;
-        margin-top: 0;
-      }
-      nav > div.group:hover > div {
-        display: none;
-      }
-      nav > div.group > button::after {
-        content: " ▼";
-        font-size: 0.6em;
-      }
-      /* Para que se muestren los submenus al hacer click en móviles, se puede agregar JS si se quiere */
-      
-      #auth-buttons {
-        width: 100%;
-        justify-content: center;
-        margin-top: 0.5rem;
-        margin-bottom: 0.5rem;
-      }
-      .btn-auth {
-        flex: 1;
-        margin: 0 0.25rem;
-        padding: 0.5rem 0;
-        font-size: 1rem;
-      }
-    }
   </style>
 </head>
 <body>
@@ -203,37 +151,36 @@
     <div id="header-inner">
       <!-- Menú centrado absolutamente -->
       <!-- Reemplaza esta sección del menú <nav> con lo siguiente -->
-      <nav>
-        <div class="group relative cursor-pointer">
-          <button class="hover:text-blue-600">Noticias</button>
-          <div>
-            <a href="politica.html" class="block px-4 py-2 hover:bg-gray-100">Política</a>
-            <a href="impuestos.html" class="block px-4 py-2 hover:bg-gray-100">Impuestos</a>
-          </div>
-        </div>
-        <div class="group relative cursor-pointer">
-          <button class="hover:text-blue-600">Gaming</button>
-          <div>
-            <a href="lanzamientos.html" class="block px-4 py-2 hover:bg-gray-100">Lanzamientos</a>
-            <a href="e-sports.html" class="block px-4 py-2 hover:bg-gray-100">E-Sports</a>
-          </div>
-        </div>
-        <div class="group relative cursor-pointer">
-          <button class="hover:text-blue-600">Opinión</button>
-          <div>
-            <a href="editorial.html" class="block px-4 py-2 hover:bg-gray-100">Editorial</a>
-            <a href="colaboraciones.html" class="block px-4 py-2 hover:bg-gray-100">Colaboradores</a>
-          </div>
-        </div>
-        <div class="group relative cursor-pointer">
-          <button class="hover:text-blue-600">Más</button>
-          <div>
-            <a href="contacto.html" class="block px-4 py-2 hover:bg-gray-100">Contacto</a>
-            <a href="publicidad.html" class="block px-4 py-2 hover:bg-gray-100">Publicidad</a>
-          </div>
-        </div>
-      </nav>
-
+<nav>
+  <div class="group relative cursor-pointer">
+    <button class="hover:text-blue-600">Noticias</button>
+    <div>
+      <a href="politica.html" class="block px-4 py-2 hover:bg-gray-100">Política</a>
+      <a href="impuestos.html" class="block px-4 py-2 hover:bg-gray-100">Impuestos</a>
+    </div>
+  </div>
+  <div class="group relative cursor-pointer">
+    <button class="hover:text-blue-600">Gaming</button>
+    <div>
+      <a href="lanzamientos.html" class="block px-4 py-2 hover:bg-gray-100">Lanzamientos</a>
+      <a href="e-sports.html" class="block px-4 py-2 hover:bg-gray-100">E-Sports</a>
+    </div>
+  </div>
+  <div class="group relative cursor-pointer">
+    <button class="hover:text-blue-600">Opinión</button>
+    <div>
+      <a href="editorial.html" class="block px-4 py-2 hover:bg-gray-100">Editorial</a>
+      <a href="colaboraciones.html" class="block px-4 py-2 hover:bg-gray-100">Colaboradores</a>
+    </div>
+  </div>
+  <div class="group relative cursor-pointer">
+    <button class="hover:text-blue-600">Más</button>
+    <div>
+      <a href="contacto.html" class="block px-4 py-2 hover:bg-gray-100">Contacto</a>
+      <a href="publicidad.html" class="block px-4 py-2 hover:bg-gray-100">Publicidad</a>
+    </div>
+  </div>
+</nav>
       <!-- Botones iniciar sesión y registrarse -->
       <div id="auth-buttons">
         <button class="btn-auth" type="button" onclick="window.location.href='iniciarsesion.html'">Iniciar Sesión</button>
@@ -301,11 +248,11 @@
 
   <!-- FOOTER -->
   <footer class="bg-gray-950 text-gray-400 text-sm py-6 mt-16 border-t border-gray-800">
-    <div class="max-w-screen-xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
-      <p class="text-center md:text-left">&copy; 2025 Blog Del Gamer. Todos los derechos reservados.</p>
-      <p class="text-center md:text-right">Diseñado en Argentina con pasión y dedicación.</p>
-    </div>
-  </footer>
+  <div class="max-w-screen-xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
+    <p class="text-center md:text-left">&copy; 2025 Blog Del Gamer. Todos los derechos reservados.</p>
+    <p class="text-center md:text-right">Diseñado en Argentina con pasión y dedicación.</p>
+  </div>
+</footer>
 
   <script>
     let lastScroll = 0;
@@ -323,6 +270,6 @@
       lastScroll = currentScroll <= 0 ? 0 : currentScroll;
     });
   </script>
-  <script type="module" src="/JavaScript/index.js"></script>
+<script type="module" src="/JavaScript/index.js"></script>
 </body>
 </html>
